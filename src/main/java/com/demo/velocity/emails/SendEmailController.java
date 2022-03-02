@@ -11,9 +11,17 @@ public class SendEmailController {
 
     @Autowired
     private SendEmailService sendEmailService;
+    
+    @Autowired
+    private ExampleService exampleService;
 
     @PostMapping("registerSuccess")
     public String sendRegisterSuccessEmail() {
         return sendEmailService.sendRegisterSuccessEmail() ? "success" : "fail";
+    }
+    
+    @PostMapping("example")
+    public String sendExampleEmail() {
+        return exampleService.sendEmailByVelocity() ? "success" : "fail";
     }
 }
