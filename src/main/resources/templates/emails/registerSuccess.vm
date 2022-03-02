@@ -1,0 +1,5 @@
+<html>
+<body>
+Hi， $user.name！您已注册成功,欢迎您！
+</body>
+</html>
