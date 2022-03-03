@@ -24,4 +24,9 @@ public class SendEmailController {
     public String sendExampleEmail() {
         return exampleService.sendEmailByVelocity() ? "success" : "fail";
     }
+
+    @PostMapping("orderDetail")
+    public String sendOrderDetailEmail() {
+        return sendEmailService.sendOrderDetailEmail() ? "success" : "fail";
+    }
 }
