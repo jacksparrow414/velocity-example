@@ -1,5 +1,6 @@
 <html>
 <body>
-Hi， $user.name！您已注册成功,欢迎您！
+Hi， $user.name！您已注册成功,欢迎您！<br/>
+<a href="https://github.com/jacksparrow414">点击这里访问我的博客主页</a>
 </body>
 </html>
