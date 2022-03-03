@@ -1,0 +1,23 @@
+<html>
+## 这里要写resources下的全路径
+    #parse("templates/emails/header.vm")
+<body>
+Hi, $order.customerName<br>
+## 使用正式语法
+您在${order.paymentTime}时完成的订单详情如下
+<table border="1">
+    <tr>
+        <th>宝贝</th>
+    </tr>
+    #set($temList = $order.items)
+    #foreach($item in $temList)
+        <tr>
+            <td>$item</td>
+        </tr>
+    #end
+</table>
+<br>
+合计金额为：$order.paymentAmount<br>
+配送方式为：$order.deliveryMethod
+</body>
+</html>
