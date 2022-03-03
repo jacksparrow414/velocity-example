@@ -25,8 +25,8 @@ public class ExampleService {
     @PostConstruct
     public void initVelocity() {
         // 读取resource下的模板文件
-        Velocity.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath");
-        Velocity.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
+        Velocity.setProperty(RuntimeConstants.RESOURCE_LOADERS, "classpath");
+        Velocity.setProperty("resource.loader.classpath.class", ClasspathResourceLoader.class.getName());
         Velocity.init();
     }
     
