@@ -38,8 +38,8 @@ public class SendEmailService {
     
     @PostConstruct
     public void initVelocity() {
-        ve.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath");
-        ve.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
+        ve.setProperty(RuntimeConstants.RESOURCE_LOADERS, "classpath");
+        ve.setProperty("resource.loader.classpath.class", ClasspathResourceLoader.class.getName());
         ve.init();
     }
     
@@ -52,7 +52,7 @@ public class SendEmailService {
     @SneakyThrows
     public boolean sendRegisterSuccessEmail() {
         VelocityContext context = new VelocityContext();
-        context.put("user", User.builder().name("jack").build());
+        context.put("user", User.builder().name("关皓").build());
         Template t = ve.getTemplate(SendEmailUtil.obtainTemplateRealPath("registerSuccess"));
         StringWriter writer = new StringWriter();
         t.merge(context, writer);
