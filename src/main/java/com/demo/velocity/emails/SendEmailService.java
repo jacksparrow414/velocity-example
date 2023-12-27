@@ -3,6 +3,14 @@ package com.demo.velocity.emails;
 import com.demo.velocity.entity.Order;
 import com.demo.velocity.entity.User;
 import com.demo.velocity.utils.SendEmailUtil;
+import java.io.StringWriter;
+import java.math.BigDecimal;
+import java.nio.charset.Charset;
+import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.mail.internet.MimeMessage;
 import lombok.SneakyThrows;
 import lombok.extern.java.Log;
 import org.apache.velocity.Template;
@@ -14,15 +22,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-
-import javax.annotation.PostConstruct;
-import javax.mail.internet.MimeMessage;
-import java.io.StringWriter;
-import java.math.BigDecimal;
-import java.nio.charset.Charset;
-import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * 使用 VelocityEngine 出现 Unable to find resource解决方案
@@ -50,12 +49,13 @@ public class SendEmailService {
      * They can be anything you want - they are just used to associate a set of properties together.
      * However, it is recommended that you use names that give some hint of the function
      *
-     * 说明可以将file,class,jar的位置替换成其他，所以下面的写法是resource.loader.classpath.class，这里使用classpath
+     * 说明可以将file,class,jar的位置替换成其他，所以下面的写法是resource.loader.class.class，这里使用class
      */
     @PostConstruct
     public void initVelocity() {
-        ve.setProperty(RuntimeConstants.RESOURCE_LOADERS, "classpath");
-        ve.setProperty("resource.loader.classpath.class", ClasspathResourceLoader.class.getName());
+        ve.setProperty(RuntimeConstants.RESOURCE_LOADERS, "class");
+        ve.setProperty("resource.loader.class.class", ClasspathResourceLoader.class.getName());
+        ve.setProperty("resource.loader.class.cache", true);
         ve.init();
     }
     
